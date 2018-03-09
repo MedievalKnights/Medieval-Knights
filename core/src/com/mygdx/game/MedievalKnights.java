@@ -3,12 +3,26 @@ package com.mygdx.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.GLTexture;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MedievalKnights extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
+	
+	public static void main(String[] args) {
+		
+	}
+	
+
+//	public void createRectangle() {
+//		Texture texture;
+//		batch = new SpriteBatch();
+//		batch.begin();
+//		batch.draw(rect, 30, 30);
+//		batch.end();
+//	}
 	
 	@Override
 	public void create () {
