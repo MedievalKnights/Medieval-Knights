@@ -2,47 +2,14 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Screen;
 
-public class GameScreen implements Screen {
+public class GameScreen {
 
-	private MedievalKnights game; 
-	
-	public GameScreen(MedievalKnights game) {
-		this.game = game; 
-	}
-	
-	@Override
-	public void show() {
-		
+	public GameScreen() {
+
 	}
 
-	@Override
-	public void render(float delta) {
-		
-	}
+	public void create() {
 
-	@Override
-	public void resize(int width, int height) {
-		
-	}
-
-	@Override
-	public void pause() {
-		
-	}
-
-	@Override
-	public void resume() {
-		
-	}
-
-	@Override
-	public void hide() {
-		
-	}
-
-	@Override
-	public void dispose() {
-		
 	}
 
 }
