@@ -16,24 +16,11 @@ public class MedievalKnights extends ApplicationAdapter {
 	SpriteBatch batch;
 	BitmapFont font;
 	Texture img;
-<<<<<<< HEAD
-	
-	public static void main(String[] args) {
+
+	static void main(String[] args) {
 		
 	}
 	
-
-//	public void createRectangle() {
-//		Texture texture;
-//		batch = new SpriteBatch();
-//		batch.begin();
-//		batch.draw(rect, 30, 30);
-//		batch.end();
-//	}
-	
-=======
-
->>>>>>> MedievalKnights/master
 	@Override
 	public void create() {
 		startMenu = new Menu();
