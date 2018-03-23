@@ -11,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.Menu;
 
 public class MedievalKnights extends ApplicationAdapter {
+	GameScreen gameScreen; 
 	Menu startMenu; 
 	SpriteBatch batch;
 	BitmapFont font;
@@ -18,6 +19,7 @@ public class MedievalKnights extends ApplicationAdapter {
 
 	@Override
 	public void create() {
+		gameScreen = new GameScreen(); 
 		startMenu = new Menu();
 		batch = new SpriteBatch(); 
 		font = new BitmapFont(); 
@@ -42,6 +44,6 @@ public class MedievalKnights extends ApplicationAdapter {
 	}
 
 	public void startGame() {
-		
+		gameScreen.create();
 	}
 }
