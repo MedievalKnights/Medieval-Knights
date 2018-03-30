@@ -1,19 +1,50 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 
 public class KeyInput implements InputProcessor{
-
+	Player player;
 	public boolean keyDown(int keycode) {
-		if(keycode == 'w')
-			return true;
-		else
-			return false;
+		System.out.println(keycode);
+		switch(keycode) {
+			case Keys.W:
+				player.setmUp(true);
+				break;
+			case Keys.A:
+				player.setmLeft(true);
+				break;
+			case Keys.S:
+				player.setmDown(true);
+				break;
+			case Keys.D:
+				player.setmRight(true);
+				break;
+		}
+		return false;
+	}
+	public void setPlayer(Player players) {
+		player=players;
+		
+		
 	}
 
 	@Override
 	public boolean keyUp(int keycode) {
-		// TODO Auto-generated method stub
+		switch(keycode) {
+		case Keys.W:
+			player.setmUp(false);
+			break;
+		case Keys.A:
+			player.setmLeft(false);
+			break;
+		case Keys.S:
+			player.setmDown(false);
+			break;
+		case Keys.D:
+			player.setmRight(false);
+			break;
+	}
 		return false;
 	}
 

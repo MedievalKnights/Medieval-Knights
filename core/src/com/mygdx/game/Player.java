@@ -6,9 +6,11 @@ public class Player{
 	int maxHP;
 	int currentHP;
 	int armor;
-	int speed;
+	double speed;
+	double tempSpeed;
 	int x;
 	int y;
+	boolean mUp, mDown, mLeft, mRight;
 	Texture image;
 	String name;
 	String desc;
@@ -26,10 +28,55 @@ public class Player{
 		y = Y;
 		inputs = new KeyInput();
 	}
+	public double getSpeed() {
+		return speed;
+	}
 	
-	public void move(int lateral, int vertical) {
-		x += lateral;
-		y += vertical;
+	public void setmUp(boolean mUp) {
+		this.mUp = mUp;
+	}
+	
+	public void setmDown(boolean mDown) {
+		this.mDown = mDown;
+	}
+	
+	public void setmLeft(boolean mLeft) {
+		this.mLeft = mLeft;
+	}
+	
+	public void setmRight(boolean mRight) {
+		this.mRight = mRight;
+	}
+	
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+	
+	public void walk() {
+		
+	}
+	
+	public void move() {
+		if((mUp == true && (mLeft == true || mRight == true))||(mDown == true && (mLeft == true || mRight == true))) {
+			tempSpeed = Math.sqrt((speed*speed)/2);
+		}
+		else {
+			tempSpeed = speed;
+		}
+		
+		if(mUp == true && mDown == false) {
+			y += tempSpeed;
+		}
+		else if(mUp == false && mDown == true){
+			y -= tempSpeed;
+		}
+		
+		if(mLeft == true && mRight == false) {
+			x -= tempSpeed;
+		}
+		else if(mLeft == false && mRight == true){
+			x += tempSpeed;
+		}
 	}
 	
 	public int getX() {
