@@ -7,9 +7,10 @@ public class Player{
 	int currentHP;
 	int armor;
 	double speed;
+	double diagSpeed;
 	double tempSpeed;
-	int x;
-	int y;
+	double x;
+	double y;
 	boolean mUp, mDown, mLeft, mRight;
 	Texture image;
 	String name;
@@ -27,6 +28,7 @@ public class Player{
 		x = X;
 		y = Y;
 		inputs = new KeyInput();
+		diagSpeed = Math.sqrt((speed*speed)/2);
 	}
 	public double getSpeed() {
 		return speed;
@@ -58,7 +60,7 @@ public class Player{
 	
 	public void move() {
 		if((mUp == true && (mLeft == true || mRight == true))||(mDown == true && (mLeft == true || mRight == true))) {
-			tempSpeed = Math.sqrt((speed*speed)/2);
+			tempSpeed = diagSpeed;
 		}
 		else {
 			tempSpeed = speed;
@@ -80,11 +82,11 @@ public class Player{
 	}
 	
 	public int getX() {
-		return x;
+		return (int) Math.round(x);
 	}
 	
 	public int getY() {
-		return y;
+		return (int) Math.round(y);
 	}
 	
 	public int getHP() {
