@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.GLTexture;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,13 +12,19 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.Menu;
 
 public class MedievalKnights extends ApplicationAdapter {
+	GameScreen gameScreen; 
 	Menu startMenu; 
 	SpriteBatch batch;
 	BitmapFont font;
 	Texture img;
 
+	static void main(String[] args) {
+		
+	}
+	
 	@Override
 	public void create() {
+		gameScreen = new GameScreen(); 
 		startMenu = new Menu();
 		batch = new SpriteBatch(); 
 		font = new BitmapFont(); 
@@ -42,6 +49,6 @@ public class MedievalKnights extends ApplicationAdapter {
 	}
 
 	public void startGame() {
-		
+		gameScreen.create();
 	}
 }
