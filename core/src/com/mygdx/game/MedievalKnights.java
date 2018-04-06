@@ -11,44 +11,43 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.Menu;
 
-public class MedievalKnights extends ApplicationAdapter {
-	GameScreen gameScreen; 
-	Menu startMenu; 
+public class MedievalKnights extends ApplicationAdapter{
 	SpriteBatch batch;
-	BitmapFont font;
-	Texture img;
-
-	static void main(String[] args) {
-		
-	}
+	Texture background;
+	Player player;
+	KeyInput inputs;
 	
 	@Override
-	public void create() {
-		gameScreen = new GameScreen(); 
-		startMenu = new Menu();
-		batch = new SpriteBatch(); 
-		font = new BitmapFont(); 
-		
-		startMenu.create(this);
+	public void create () {
+		batch = new SpriteBatch();
+		inputs = new KeyInput();
+		background = new Texture("Grass_Complete_RPG.png");
+		player = new Player(15,15,5,2, "John", "A Guy",new Texture("New_Piskel.png"),15,15);
+		inputs.setPlayer(player);
+		Gdx.input.setInputProcessor(inputs);
 	}
 
 	@Override
-	public void render() {
-		Gdx.graphics.setTitle("FPS : " + Gdx.graphics.getFramesPerSecond());
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+	public void render () {
+		player.move();
+		Gdx.gl.glClearColor(1, 0, 0, 1);
+    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		batch.begin();
-		startMenu.render(batch);
+		batch.draw(background,0,0,900,900);
+		batch.draw(player.getImg(),player.getX(),player.getY(),96,96);
 		batch.end();
 	}
 
 	@Override
-	public void dispose() {
-	
+	public void dispose () {
+		batch.dispose();
+		background.dispose();	
 	}
 
 	public void startGame() {
 		gameScreen.create();
 	}
+	
+	
 }
