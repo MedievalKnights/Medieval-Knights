@@ -2,9 +2,14 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.GLTexture;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.physics.box2d.World;
+import com.mygdx.game.Menu;
 
 public class MedievalKnights extends ApplicationAdapter{
 	SpriteBatch batch;
@@ -26,17 +31,22 @@ public class MedievalKnights extends ApplicationAdapter{
 	public void render () {
 		player.move();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
 		batch.begin();
 		batch.draw(background,0,0,900,900);
 		batch.draw(player.getImg(),player.getX(),player.getY(),96,96);
 		batch.end();
 	}
-	
+
 	@Override
 	public void dispose () {
 		batch.dispose();
-		background.dispose();
+		background.dispose();	
+	}
+
+	public void startGame() {
+		gameScreen.create();
 	}
 	
 	
