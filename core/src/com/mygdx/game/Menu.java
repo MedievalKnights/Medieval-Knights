@@ -79,7 +79,7 @@ public class Menu {
 	public void getButtonInput() {
 		if (startButton.isPressed()) {
 			System.out.println("PRESSED!");
-			gameScreen.startGame();
+			//gameScreen.startGame();
 		}
 	}
 }

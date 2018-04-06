@@ -44,10 +44,6 @@ public class MedievalKnights extends ApplicationAdapter{
 		batch.dispose();
 		background.dispose();	
 	}
-
-	public void startGame() {
-		gameScreen.create();
-	}
 	
 	
 }
