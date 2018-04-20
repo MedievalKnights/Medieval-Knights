@@ -8,21 +8,24 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class GameScreen {
 
-	SpriteBatch batch;
+	MedievalKnights game; 
+	
 	Texture background;
 	Player player;
 	KeyInput inputs;
 	
-	public void create() {
-		batch = new SpriteBatch();
+	public void create(MedievalKnights game) {
+		this.game = game; 
 		inputs = new KeyInput();
 		background = new Texture("Grass_Complete_RPG.png");
 		player = new Player(15,15,5,2, "John", "A Guy",new Texture("New_Piskel.png"),15,15);
 		inputs.setPlayer(player);
 		Gdx.input.setInputProcessor(inputs);
+		
+		game.gameState++;
 	}
 
-	public void render () {
+	public void render (SpriteBatch batch) {
 		player.move();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -33,8 +36,10 @@ public class GameScreen {
 		batch.end();
 	}
 
+
+
 	public void dispose () {
-		batch.dispose();
+		game.getBatch().dispose();
 		background.dispose();	
 	}
 }

@@ -11,32 +11,49 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.Menu;
 
-public class MedievalKnights extends ApplicationAdapter{
-	
+public class MedievalKnights extends ApplicationAdapter {
+
+	public SpriteBatch batch;
+
 	int gameState = 0;
-	
+
 	Menu menuScreen = new Menu();
 	GameScreen gameScreen = new GameScreen();
-	
+
 	@Override
 	public void create() {
-		if(gameState == 0)
-			menuScreen.create();
-		if(gameState == 1)
-			gameScreen.create();
+		batch = new SpriteBatch();
+		if (gameState == 0)
+			menuScreen.create(this);
+	
+			
 	}
+
 	@Override
-	public void render () {
-		if(gameState == 0)
-			menuScreen.render();
-		if(gameState == 1)
-			gameScreen.render();
+	public void render() {
+		if (gameState == 0)
+			menuScreen.render(batch);
+		if (gameState == 1)
+			gameScreen.render(batch);
 	}
+
 	@Override
-	public void dispose () {
-		if(gameState == 0)
-			menuScreen.dispose();
-		if(gameState == 1)
-			gameScreen.dispose()	;
+	public void dispose() {
+		if (gameState == 0)
+			// menuScreen.dispose();
+			if (gameState == 1)
+				gameScreen.dispose();
+	}
+
+	public void startGame() { 
+		gameScreen.create(this);
+	}
+	
+	public SpriteBatch getBatch() {
+		return batch;
+	}
+
+	public void setBatch(SpriteBatch batch) {
+		this.batch = batch;
 	}
 }
