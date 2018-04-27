@@ -11,43 +11,49 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.Menu;
 
-public class MedievalKnights extends ApplicationAdapter{
-	SpriteBatch batch;
-	Texture background;
-	Player player;
-	KeyInput inputs;
-	
+public class MedievalKnights extends ApplicationAdapter {
+
+	public SpriteBatch batch;
+
+	int gameState = 0;
+
+	Menu menuScreen = new Menu();
+	GameScreen gameScreen = new GameScreen();
+
 	@Override
-	public void create () {
+	public void create() {
 		batch = new SpriteBatch();
-		inputs = new KeyInput();
-		background = new Texture("Grass_Complete_RPG.png");
-		player = new Player(15,15,5,2, "John", "A Guy",new Texture("New_Piskel.png"),15,15);
-		inputs.setPlayer(player);
-		Gdx.input.setInputProcessor(inputs);
+		if (gameState == 0)
+			menuScreen.create(this);
+	
+			
 	}
 
 	@Override
-	public void render () {
-		player.move();
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-		batch.begin();
-		batch.draw(background,0,0,900,900);
-		batch.draw(player.getImg(),player.getX(),player.getY(),96,96);
-		batch.end();
+	public void render() {
+		if (gameState == 0)
+			menuScreen.render(batch);
+		if (gameState == 1)
+			gameScreen.render(batch);
 	}
 
 	@Override
-	public void dispose () {
-		batch.dispose();
-		background.dispose();	
+	public void dispose() {
+		if (gameState == 0)
+			// menuScreen.dispose();
+			if (gameState == 1)
+				gameScreen.dispose();
 	}
 
-	public void startGame() {
-		gameScreen.create();
+	public void startGame() { 
+		gameScreen.create(this);
 	}
 	
-	
+	public SpriteBatch getBatch() {
+		return batch;
+	}
+
+	public void setBatch(SpriteBatch batch) {
+		this.batch = batch;
+	}
 }

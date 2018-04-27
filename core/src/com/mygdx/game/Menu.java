@@ -1,85 +1,90 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 
 public class Menu {
-	MedievalKnights gameScreen;
 	Stage stage;
+	TextButton textButton;
+	TextButton genericButton;
+	TextButtonStyle buttonStyle;
 	BitmapFont font;
 	Skin skin;
-
+	TextureAtlas buttonAtlas;
+	SpriteBatch batch;
+	Texture background;
+	Pixmap pixmap;
+	Texture texture;
 	TextButton startButton;
-	TextButton helpButton;
-	TextButton exitButton;
+	
+	MedievalKnights game; 
 
-	String startButtonText;
-	String helpButtonText;
-	String exitButtonText;
+	Pixmap backgroundMap;
 
-
-	public void create(MedievalKnights gameScreen) {
-		gameScreen = gameScreen;
-		
+	public void create(MedievalKnights game) {
 		stage = new Stage();
 		font = new BitmapFont();
 		skin = new Skin();
 		
-		startButtonText = "Start";
-		helpButtonText = "Help";
-		exitButtonText = "Exit";
+		this.game = game; 
 		
 		Gdx.input.setInputProcessor(stage);
-		mainMenuButtons(startButtonText, helpButtonText, exitButtonText);
-		// img = new Texture("badlogic.jpg");
 
-	}
-
-	public void mainMenuButtons(String startButtonText, String helpButtonText, String exitButtonText) {
 		skin.add("default", font);
+		skin.add("startbutton", new Texture("startButton.png"));
 
-		// Create a texture
-		Pixmap pixmap = new Pixmap((int) Gdx.graphics.getWidth() / 4, (int) Gdx.graphics.getHeight() / 10,
-				Pixmap.Format.RGB888);
-		pixmap.setColor(Color.WHITE);
-		pixmap.fill();
-		skin.add("background", new Texture(pixmap));
-		// skin.add("default", font);
-
-		// Create a button style
 		TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
-		textButtonStyle.up = skin.newDrawable("background", Color.BROWN);
-		textButtonStyle.down = skin.newDrawable("background", Color.BROWN);
-		// textButtonStyle.checked = skin.newDrawable("background", Color.DARK_GRAY);
-		textButtonStyle.over = skin.newDrawable("background", new Color(59, 26, 30,0));
+
+		textButtonStyle.up = skin.newDrawable("startbutton", Color.GRAY);
+		textButtonStyle.down = skin.newDrawable("startbutton", Color.DARK_GRAY);
+		textButtonStyle.over = skin.newDrawable("startbutton", Color.LIGHT_GRAY);
 		textButtonStyle.font = skin.getFont("default");
+
 		skin.add("default", textButtonStyle);
 
-		startButton = new TextButton(startButtonText, skin); // Use the initialized skin
-		startButton.setPosition(Gdx.graphics.getWidth() / 2 - Gdx.graphics.getWidth() / 8,
-				Gdx.graphics.getHeight() / 2);
+		pixmap = new Pixmap((int) Gdx.graphics.getWidth() / 4, (int) Gdx.graphics.getHeight() / 10,
+				Pixmap.Format.RGB888);
+		pixmap.setColor(Color.BLACK);
+		pixmap.fill();
+
+		texture = new Texture(pixmap);
+
+		startButton = new TextButton("", skin);
+		startButton.setPosition(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+
 		stage.addActor(startButton);
 
 	}
 
 	public void render(SpriteBatch batch) {
+		batch.begin();
+		batch.draw(texture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		batch.end();
+
 		stage.act();
 		stage.draw();
-		getButtonInput();
+		
+		getButtonInput(); 
 	}
 
+	public void dispose() {
+		batch.dispose();
+		background.dispose();
+
+	}
 	public void getButtonInput() {
-		if (startButton.isPressed()) {
-			System.out.println("PRESSED!");
-			gameScreen.startGame();
+		if(startButton.isPressed()) {
+			game.startGame();
 		}
 	}
+	
 }
