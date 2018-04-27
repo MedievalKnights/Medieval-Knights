@@ -45,9 +45,11 @@ public class MedievalKnights extends ApplicationAdapter {
 				gameScreen.dispose();
 	}
 
+
 	public void startGame() { 
 		gameScreen.create(this);
 	}
+
 	
 	public SpriteBatch getBatch() {
 		return batch;
