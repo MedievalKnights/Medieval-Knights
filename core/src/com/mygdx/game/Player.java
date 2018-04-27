@@ -34,7 +34,7 @@ public class Player {
 		diagSpeed = (float) Math.sqrt((speed * speed) / 2);
 
 		camera = new OrthographicCamera(900, 900);
-		camera.translate(X, Y);
+		camera.translate(X+38, Y+16);
 	}
 
 	public double getSpeed() {
