@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class GameScreen {
 
 	MedievalKnights game; 
-	
 	Texture background;
 	Player player;
 	KeyInput inputs;
@@ -33,6 +32,7 @@ public class GameScreen {
 		batch.begin();
 		batch.draw(background,0,0,900,900);
 		batch.draw(player.getImg(),player.getX(),player.getY(),96,96);
+		batch.setProjectionMatrix(player.camera.combined);
 		batch.end();
 	}
 
