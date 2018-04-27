@@ -44,13 +44,12 @@ public class MedievalKnights extends ApplicationAdapter {
 			if (gameState == 1)
 				gameScreen.dispose();
 	}
-<<<<<<< HEAD
-=======
+
 
 	public void startGame() { 
 		gameScreen.create(this);
 	}
->>>>>>> MedievalKnights/master
+
 	
 	public SpriteBatch getBatch() {
 		return batch;

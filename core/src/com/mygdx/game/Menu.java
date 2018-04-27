@@ -34,7 +34,7 @@ public class Menu {
 		stage = new Stage();
 		font = new BitmapFont();
 		skin = new Skin();
-		
+		//background = new Texture("");
 		this.game = game; 
 		
 		Gdx.input.setInputProcessor(stage);
@@ -82,15 +82,16 @@ public class Menu {
 
 	}
 	public void getButtonInput() {
-<<<<<<< HEAD
+
 		if (startButton.isPressed()) {
 			System.out.println("PRESSED!");
 			//gameScreen.startGame();
-=======
+
 		if(startButton.isPressed()) {
 			game.startGame();
->>>>>>> MedievalKnights/master
+
 		}
 	}
 	
+	}
 }
