@@ -34,7 +34,7 @@ public class Menu {
 		stage = new Stage();
 		font = new BitmapFont();
 		skin = new Skin();
-		//background = new Texture("");
+		
 		this.game = game; 
 		
 		Gdx.input.setInputProcessor(stage);
@@ -56,8 +56,8 @@ public class Menu {
 		pixmap.setColor(Color.BLACK);
 		pixmap.fill();
 
-		texture = new Texture(pixmap);
-
+		//texture = new Texture(pixmap);
+		texture = new Texture("background.jpg");
 		startButton = new TextButton("", skin);
 		startButton.setPosition(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
 
