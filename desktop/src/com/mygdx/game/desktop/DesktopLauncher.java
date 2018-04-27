@@ -15,3 +15,4 @@ public class DesktopLauncher {
 		config.fullscreen = false;
 	}
 }
+
