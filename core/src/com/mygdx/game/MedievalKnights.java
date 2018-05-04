@@ -12,43 +12,50 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.Menu;
 
 public class MedievalKnights extends ApplicationAdapter {
-	GameScreen gameScreen; 
-	Menu startMenu; 
-	SpriteBatch batch;
-	BitmapFont font;
-	Texture img;
 
-	static void main(String[] args) {
-		
-	}
-	
+	public SpriteBatch batch;
+
+	int gameState = 0;
+
+	Menu menuScreen = new Menu();
+	GameScreen gameScreen = new GameScreen();
+
 	@Override
 	public void create() {
-		gameScreen = new GameScreen(); 
-		startMenu = new Menu();
-		batch = new SpriteBatch(); 
-		font = new BitmapFont(); 
-		
-		startMenu.create(this);
+		batch = new SpriteBatch();
+		if (gameState == 0)
+			menuScreen.create(this);
+	
+			
 	}
 
 	@Override
 	public void render() {
-		Gdx.graphics.setTitle("FPS : " + Gdx.graphics.getFramesPerSecond());
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-		batch.begin();
-		startMenu.render(batch);
-		batch.end();
+		if (gameState == 0)
+			menuScreen.render(batch);
+		if (gameState == 1)
+			gameScreen.render(batch);
 	}
 
 	@Override
 	public void dispose() {
-	
+		if (gameState == 0)
+			// menuScreen.dispose();
+			if (gameState == 1)
+				gameScreen.dispose();
 	}
 
-	public void startGame() {
-		gameScreen.create();
+
+	public void startGame() { 
+		gameScreen.create(this);
+	}
+
+	
+	public SpriteBatch getBatch() {
+		return batch;
+	}
+
+	public void setBatch(SpriteBatch batch) {
+		this.batch = batch;
 	}
 }

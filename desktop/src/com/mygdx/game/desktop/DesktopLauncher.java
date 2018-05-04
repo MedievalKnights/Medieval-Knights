@@ -9,11 +9,10 @@ import com.mygdx.game.Menu;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-
-		config.title = "Medieval Knights"; 
-		//config.initialBackgroundColor
-		config.fullscreen = true; 
+		config.width = 900;
+		config.height = 900;
 		new LwjglApplication(new MedievalKnights(), config);
-
+		config.fullscreen = false;
 	}
 }
+
