@@ -12,5 +12,7 @@ public class DesktopLauncher {
 		config.width = 900;
 		config.height = 900;
 		new LwjglApplication(new MedievalKnights(), config);
+		config.fullscreen = false;
 	}
 }
+
