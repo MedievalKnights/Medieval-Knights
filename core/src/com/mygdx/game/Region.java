@@ -15,7 +15,7 @@ public class Region {
 	public Region() {
 		for(int i = 0; i < 10;i++) {
 			for(int j = 0; j < 10;j++) {
-				region[i][j] = new Tile(i*32,i*32,background.getKeyFrame(1f));
+				region[i][j] = new Tile(i*32,j*32,background.getKeyFrame(1f));
 			}
 		}
 	}
