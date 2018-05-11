@@ -3,13 +3,20 @@ package com.mygdx.game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class World {
-	Region[][] world = new Region[1][1];
+	int worldLength = 3;
+	int worldWidth = 3;
+	Region[][] world = new Region[worldLength][worldWidth];
 	public World() {
-		world[0][0] = new Region();
+		for (int i = 0; i < worldLength; i++) {
+			for (int j = 0; j < worldWidth; j++) {
+				world[i][j] = new Region(512*i,512*j);
+			}
+		}
+		
 	}
 	public void render(SpriteBatch batch) {
-		for(int i = 0; i < 1;i++) {
-			for(int j = 0; j < 1;j++) {
+		for(int i = 0; i < worldLength;i++) {
+			for(int j = 0; j < worldWidth;j++) {
 				world[i][j].render(batch);
 			}
 		}
