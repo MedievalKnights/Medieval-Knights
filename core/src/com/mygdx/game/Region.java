@@ -27,6 +27,10 @@ public class Region {
 		for(int i = 0; i < 16;i++) {
 			for(int j = 0; j < 16;j++) {
 				region[i][j] = new Tile(i*32+regionX,j*32+regionY,background.getKeyFrame(1f));
+<<<<<<< HEAD
+>>>>>>> MedievalKnights/master
+=======
+
 >>>>>>> MedievalKnights/master
 			}
 		}
