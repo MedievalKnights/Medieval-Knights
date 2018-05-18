@@ -10,7 +10,6 @@ public class GameScreen {
 
 	World world;
 	MedievalKnights game; 
-	Texture background;
 	Player player;
 	KeyInput inputs;
 	
@@ -18,8 +17,7 @@ public class GameScreen {
 		world = new World();
 		this.game = game; 
 		inputs = new KeyInput();
-		background = new Texture("Grass_Complete_RPG.png");
-		player = new Player(100,100,5,2, "John", "A Guy",new Texture("New_Piskel.png"),15,15);
+		player = new Player(100,100,5,2, "John", "A Guy",new Texture("New_Piskel.png"),15,15,world.getWorldX(),world.getWorldY());
 		inputs.setPlayer(player);
 		Gdx.input.setInputProcessor(inputs);
 		
@@ -33,7 +31,7 @@ public class GameScreen {
 		batch.begin();
 		world.render(batch);
 		player.render(batch);
-		batch.draw(player.getImg(),player.getX(),player.getY(),96,96);
+		batch.draw(player.getImg(),player.getX()-32,player.getY()-32,64,64);
 		batch.setProjectionMatrix(player.camera.combined);
 		batch.end();
 	}
@@ -42,6 +40,5 @@ public class GameScreen {
 
 	public void dispose () {
 		game.getBatch().dispose();
-		background.dispose();	
 	}
 }

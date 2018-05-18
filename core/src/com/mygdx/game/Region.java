@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class Region {
 	TextureAtlas atlasBack = new TextureAtlas(Gdx.files.internal("Grass.atlas"));
 	Animation<TextureRegion> background = new Animation<TextureRegion>(1f,atlasBack.getRegions());
+
 	int regionX;
 	int regionY;
 	Tile[][] region = new Tile[16][16];
@@ -19,7 +20,6 @@ public class Region {
 		for(int i = 0; i < 16;i++) {
 			for(int j = 0; j < 16;j++) {
 				region[i][j] = new Tile(i*32+regionX,j*32+regionY,background.getKeyFrame(1f));
-
 			}
 		}
 	}

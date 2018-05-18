@@ -21,4 +21,10 @@ public class World {
 			}
 		}
 	}
+	public int getWorldX() {
+		return worldLength*512;
+	}
+	public int getWorldY() {
+		return worldWidth*512;
+	}
 }
