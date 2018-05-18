@@ -19,7 +19,7 @@ public class GameScreen {
 		this.game = game; 
 		inputs = new KeyInput();
 		background = new Texture("Grass_Complete_RPG.png");
-		player = new Player(15,15,5,2, "John", "A Guy",new Texture("New_Piskel.png"),15,15);
+		player = new Player(100,100,5,2, "John", "A Guy",new Texture("New_Piskel.png"),15,15);
 		inputs.setPlayer(player);
 		Gdx.input.setInputProcessor(inputs);
 		
