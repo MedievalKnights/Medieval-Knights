@@ -3,10 +3,10 @@ package com.mygdx.game;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Player {
-	int maxHP;
-	int currentHP;
+
 	int armor;
 	float speed;
 	float diagSpeed;
@@ -19,10 +19,12 @@ public class Player {
 	String desc;
 	KeyInput inputs;
 	OrthographicCamera camera;
+	HPbar hpBar;
 
 	public Player(int MAX, int CURRENT, int ARMOR, int SPEED, String NAME, String DESC, Texture IMG, int X, int Y) {
-		maxHP = MAX;
-		currentHP = CURRENT;
+		hpBar = new HPbar();
+		hpBar.maxHP = MAX;
+		hpBar.currentHP = CURRENT;
 		armor = ARMOR;
 		speed = SPEED;
 		name = NAME;
@@ -101,22 +103,26 @@ public class Player {
 	}
 
 	public int getHP() {
-		return currentHP;
+		return hpBar.currentHP;
 	}
 
 	public void damage(int damage) {
-		if (currentHP - damage < 0)
-			currentHP = 0;
+		if (hpBar.currentHP - damage < 0)
+			hpBar.currentHP = 0;
 		else
-			currentHP -= damage;
+			hpBar.currentHP -= damage;
 	}
 
 	public void heal(int heal) {
-		if (currentHP + heal > maxHP)
-			currentHP = maxHP;
+		if (hpBar.currentHP + heal > hpBar.maxHP)
+			hpBar.currentHP = hpBar.maxHP;
 		else
-			currentHP += heal;
+			hpBar.currentHP += heal;
 	}
+	public void render (SpriteBatch batch) {
+		hpBar.draw(batch);
+	}
+	
 
 	public Texture getImg() {
 		return image;

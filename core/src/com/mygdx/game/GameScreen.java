@@ -19,7 +19,7 @@ public class GameScreen {
 		this.game = game; 
 		inputs = new KeyInput();
 		background = new Texture("Grass_Complete_RPG.png");
-		player = new Player(15,15,5,2, "John", "A Guy",new Texture("New_Piskel.png"),15,15);
+		player = new Player(100,100,5,2, "John", "A Guy",new Texture("New_Piskel.png"),15,15);
 		inputs.setPlayer(player);
 		Gdx.input.setInputProcessor(inputs);
 		
@@ -32,6 +32,7 @@ public class GameScreen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		world.render(batch);
+		player.render(batch);
 		batch.draw(player.getImg(),player.getX(),player.getY(),96,96);
 		batch.setProjectionMatrix(player.camera.combined);
 		batch.end();
