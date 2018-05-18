@@ -21,7 +21,7 @@ int regionY;
 
 	int regionX;
 	int regionY;
-	Tile[][] region = new Tile[16][16];
+	//Tile[][] region = new Tile[16][16];
 	public Region(int rX, int rY) {
 		regionX = rX;
 		regionY = rY;

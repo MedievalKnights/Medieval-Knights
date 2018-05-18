@@ -120,9 +120,7 @@ public class Player {
 			hpBar.currentHP += heal;
 	}
 	public void render (SpriteBatch batch) {
-		batch.begin();
-		hpBar.draw();
-		batch.end();
+		hpBar.draw(batch);
 	}
 	
 
