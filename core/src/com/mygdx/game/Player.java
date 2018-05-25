@@ -24,11 +24,8 @@ public class Player {
 	HPbar hpBar;
 	StaminaBar saBar;
 
-<<<<<<< HEAD
-	public Player(int MAXHP, int CURRENTHP, int MAXSA, int CURRENTSA, int ARMOR, int SPEED, String NAME, String DESC, Texture IMG, int X, int Y) {
-=======
-	public Player(int MAX, int CURRENT, int ARMOR, int SPEED, String NAME, String DESC, Texture IMG, int X, int Y, int MaxX, int MaxY) {
->>>>>>> MedievalKnights/master
+
+	public Player(int MAXHP, int CURRENTHP, int MAXSA, int CURRENTSA, int ARMOR, int SPEED, String NAME, String DESC, Texture IMG, int X, int Y, int MaxX, int MaxY) {
 		hpBar = new HPbar();
 		hpBar.maxHP = MAXHP;
 		hpBar.currentHP = CURRENTHP;

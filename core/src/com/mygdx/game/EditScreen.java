@@ -17,7 +17,7 @@ public class EditScreen {
 		world = new World();
 		this.game = game; 
 		inputs = new KeyInput();
-		player = new Player(100,100,5,2, "John", "A Guy",new Texture("New_Piskel.png"),150,150,world.getWorldX(),world.getWorldY());
+		player = new Player(100, 100, 100,100,5,2, "John", "A Guy",new Texture("New_Piskel.png"),150,150,world.getWorldX(),world.getWorldY());
 		inputs.setPlayer(player);
 		Gdx.input.setInputProcessor(inputs);
 		
