@@ -20,6 +20,18 @@ public class KeyInput implements InputProcessor{
 			case Keys.D:
 				player.setmRight(true);
 				break;
+			case Keys.UP:
+				player.setmUp(true);
+				break;
+			case Keys.LEFT:
+				player.setmLeft(true);
+				break;
+			case Keys.RIGHT:
+				player.setmRight(true);;
+				break;
+			case Keys.DOWN:
+				player.setmDown(true);
+				break;
 			case Keys.SHIFT_LEFT:
 				player.speed*=2;
 				player.diagSpeed*=2;
@@ -48,6 +60,18 @@ public class KeyInput implements InputProcessor{
 			break;
 		case Keys.D:
 			player.setmRight(false);
+			break;
+		case Keys.UP:
+			player.setmUp(false);
+			break;
+		case Keys.LEFT:
+			player.setmLeft(false);
+			break;
+		case Keys.RIGHT:
+			player.setmRight(false);;
+			break;
+		case Keys.DOWN:
+			player.setmDown(false);
 			break;
 		case Keys.SHIFT_LEFT:
 			player.speed/=2;
