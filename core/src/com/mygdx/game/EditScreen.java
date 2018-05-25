@@ -6,28 +6,18 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class GameScreen {
+public class EditScreen {
 
 	World world;
 	MedievalKnights game; 
 	Player player;
 	KeyInput inputs;
-	int currentHP = 100;
-	int maxHP = 100;
-	int currentSA = 100;
-	int maxSA = 100;
-	
 	
 	public void create(MedievalKnights game) {
 		world = new World();
 		this.game = game; 
 		inputs = new KeyInput();
-<<<<<<< HEAD
-		background = new Texture("Grass_Complete_RPG.png");
-		player = new Player(currentHP,maxHP,currentSA,maxSA, 5,2, "John", "A Guy",new Texture("New_Piskel.png"),15,15);
-=======
 		player = new Player(100,100,5,2, "John", "A Guy",new Texture("New_Piskel.png"),150,150,world.getWorldX(),world.getWorldY());
->>>>>>> MedievalKnights/master
 		inputs.setPlayer(player);
 		Gdx.input.setInputProcessor(inputs);
 		
@@ -41,8 +31,7 @@ public class GameScreen {
 		batch.begin();
 		world.render(batch);
 		player.render(batch);
-		batch.draw(player.getImg(),player.getX()-32,player.getY()-32,64,64); 
-
+		batch.draw(player.getImg(),player.getX()-32,player.getY()-32,64,64);
 		batch.setProjectionMatrix(player.camera.combined);
 		batch.end();
 	}
