@@ -13,6 +13,8 @@ public class Player {
 	float tempSpeed;
 	double x;
 	double y;
+	int maxX;
+	int maxY;
 	boolean mUp, mDown, mLeft, mRight;
 	Texture image;
 	String name;
@@ -21,7 +23,7 @@ public class Player {
 	OrthographicCamera camera;
 	HPbar hpBar;
 
-	public Player(int MAX, int CURRENT, int ARMOR, int SPEED, String NAME, String DESC, Texture IMG, int X, int Y) {
+	public Player(int MAX, int CURRENT, int ARMOR, int SPEED, String NAME, String DESC, Texture IMG, int X, int Y, int MaxX, int MaxY) {
 		hpBar = new HPbar();
 		hpBar.maxHP = MAX;
 		hpBar.currentHP = CURRENT;
@@ -32,6 +34,8 @@ public class Player {
 		image = IMG;
 		x = X;
 		y = Y;
+		maxX = MaxX;
+		maxY = MaxY;
 		inputs = new KeyInput();
 		diagSpeed = (float) Math.sqrt((speed * speed) / 2);
 
@@ -76,19 +80,27 @@ public class Player {
 		}
 
 		if (mUp == true && mDown == false) {
-			y += tempSpeed;
-			camera.translate(0, tempSpeed);
+			if(y < maxY) {
+				y += tempSpeed;
+				camera.translate(0, tempSpeed);
+			}
 		} else if (mUp == false && mDown == true) {
-			y -= tempSpeed;
-			camera.translate(0, -tempSpeed);
+			if(y > 0) {
+				y -= tempSpeed;
+				camera.translate(0, -tempSpeed);
+			}
 		}
 
 		if (mLeft == true && mRight == false) {
-			x -= tempSpeed;
-			camera.translate(-tempSpeed, 0);
+			if(x > 0) {
+				x -= tempSpeed;
+				camera.translate(-tempSpeed, 0);
+			}
 		} else if (mLeft == false && mRight == true) {
-			x += tempSpeed;
-			camera.translate(tempSpeed, 0);
+			if(x < maxX) {
+				x += tempSpeed;
+				camera.translate(tempSpeed, 0);
+			}
 		}
 		camera.update();
 

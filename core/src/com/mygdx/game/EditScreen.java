@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class GameScreen {
+public class EditScreen {
 
 	World world;
 	MedievalKnights game; 
@@ -31,8 +31,7 @@ public class GameScreen {
 		batch.begin();
 		world.render(batch);
 		player.render(batch);
-		batch.draw(player.getImg(),player.getX()-32,player.getY()-32,64,64); 
-
+		batch.draw(player.getImg(),player.getX()-32,player.getY()-32,64,64);
 		batch.setProjectionMatrix(player.camera.combined);
 		batch.end();
 	}
