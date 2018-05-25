@@ -20,11 +20,15 @@ public class Player {
 	KeyInput inputs;
 	OrthographicCamera camera;
 	HPbar hpBar;
+	StaminaBar saBar;
 
-	public Player(int MAX, int CURRENT, int ARMOR, int SPEED, String NAME, String DESC, Texture IMG, int X, int Y) {
+	public Player(int MAXHP, int CURRENTHP, int MAXSA, int CURRENTSA, int ARMOR, int SPEED, String NAME, String DESC, Texture IMG, int X, int Y) {
 		hpBar = new HPbar();
-		hpBar.maxHP = MAX;
-		hpBar.currentHP = CURRENT;
+		hpBar.maxHP = MAXHP;
+		hpBar.currentHP = CURRENTHP;
+		saBar = new StaminaBar();
+		saBar.maxStamina = MAXSA;
+		saBar.currentStamina = CURRENTSA;
 		armor = ARMOR;
 		speed = SPEED;
 		name = NAME;
@@ -121,6 +125,7 @@ public class Player {
 	}
 	public void render (SpriteBatch batch) {
 		hpBar.draw(batch);
+		saBar.draw(batch);
 	}
 	
 

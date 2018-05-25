@@ -10,11 +10,16 @@ public class HPbar {
 	int maxHP;
 	int currentHP;
 	int width = 200;	
-	final int height = 40;
+	final int height = 20;
+	
 	
 	public void draw(SpriteBatch batch){
 		batch.end();
 		sr.begin(ShapeType.Filled);
+		//149, 153, 160
+		sr.setColor(77f, 77f, 77f, 1f);
+		sr.rect(38, 790, 225, 65);
+		
 		//System.out.println("Hallo");
 		int x = Gdx.graphics.getWidth()/2;
 		int y = Gdx.graphics.getHeight()/2;

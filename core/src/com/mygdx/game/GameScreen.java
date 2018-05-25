@@ -13,13 +13,18 @@ public class GameScreen {
 	Texture background;
 	Player player;
 	KeyInput inputs;
+	int currentHP = 100;
+	int maxHP = 100;
+	int currentSA = 100;
+	int maxSA = 100;
+	
 	
 	public void create(MedievalKnights game) {
 		world = new World();
 		this.game = game; 
 		inputs = new KeyInput();
 		background = new Texture("Grass_Complete_RPG.png");
-		player = new Player(100,100,5,2, "John", "A Guy",new Texture("New_Piskel.png"),15,15);
+		player = new Player(currentHP,maxHP,currentSA,maxSA, 5,2, "John", "A Guy",new Texture("New_Piskel.png"),15,15);
 		inputs.setPlayer(player);
 		Gdx.input.setInputProcessor(inputs);
 		

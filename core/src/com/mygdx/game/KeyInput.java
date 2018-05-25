@@ -5,6 +5,8 @@ import com.badlogic.gdx.InputProcessor;
 
 public class KeyInput implements InputProcessor{
 	Player player;
+	GameScreen gs;
+	
 	public boolean keyDown(int keycode) {
 		System.out.println(keycode);
 		switch(keycode) {
@@ -35,6 +37,12 @@ public class KeyInput implements InputProcessor{
 			case Keys.SHIFT_LEFT:
 				player.speed*=2;
 				player.diagSpeed*=2;
+				gs.currentSA=gs.currentSA-5;
+				break;
+			case Keys.SHIFT_RIGHT:
+				player.speed*=2;
+				player.diagSpeed*=2;
+				gs.currentSA=gs.currentSA-5;
 				break;
 			
 		}
@@ -76,6 +84,12 @@ public class KeyInput implements InputProcessor{
 		case Keys.SHIFT_LEFT:
 			player.speed/=2;
 			player.diagSpeed/=2;
+			gs.currentSA=gs.currentSA+2;
+			break;
+		case Keys.SHIFT_RIGHT:
+			player.speed/=2;
+			player.diagSpeed/=2;
+			gs.currentSA=gs.currentSA+2;
 			break;
 	}
 		return false;
