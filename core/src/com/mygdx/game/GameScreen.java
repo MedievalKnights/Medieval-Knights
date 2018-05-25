@@ -32,8 +32,8 @@ public class GameScreen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		world.render(batch);
-		player.render(batch);
 		batch.draw(player.getImg(),player.getX(),player.getY(),96,96);
+		player.render(batch);
 		batch.setProjectionMatrix(player.camera.combined);
 		batch.end();
 	}
