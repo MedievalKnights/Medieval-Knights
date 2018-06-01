@@ -6,26 +6,30 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public class HPbar {
+	Player player;
 	ShapeRenderer sr = new ShapeRenderer();
 	int maxHP;
 	int currentHP;
-	int width = 200;	
+	int width = 200;
 	final int height = 20;
-	
-	
-	public void draw(SpriteBatch batch){
+
+	public void setPlay(Player play) {
+		player=play;
+	}
+
+	public void draw(SpriteBatch batch) {
 		batch.end();
 		sr.begin(ShapeType.Filled);
-		//149, 153, 160
+		// 149, 153, 160
 		sr.setColor(77f, 77f, 77f, 1f);
 		sr.rect(38, 790, 225, 65);
-		
-		//System.out.println("Hallo");
-		int x = Gdx.graphics.getWidth()/2;
-		int y = Gdx.graphics.getHeight()/2;
-		int HPP=maxHP/currentHP;
-		sr.setColor(1-HPP,1*HPP,0f,0.8f);
-		//sr.rect(15-x, y-80, width, height);
+
+		// System.out.println("Hallo");
+		int x = Gdx.graphics.getWidth() / 2;
+		int y = Gdx.graphics.getHeight() / 2;
+		int HPP = player.maxHP / player.currentHP;
+		sr.setColor(1 - HPP, 1 * HPP, 0f, 0.8f);
+		// sr.rect(15-x, y-80, width, height);
 		sr.rect(50, 825, width, height);
 		sr.end();
 		batch.begin();

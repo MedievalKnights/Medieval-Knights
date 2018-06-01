@@ -8,6 +8,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Player {
 
 	int armor;
+	public int currentHP = 100;
+	public int maxHP = 100;
+	public int currentSA = 100;
+	public int maxSA = 100;
+	Boolean isPressed = false;
 	float speed;
 	float diagSpeed;
 	float tempSpeed;
@@ -21,17 +26,16 @@ public class Player {
 	String desc;
 	KeyInput inputs;
 	OrthographicCamera camera;
+	GameScreen gs;
 	HPbar hpBar;
 	StaminaBar saBar;
 
 
-	public Player(int MAXHP, int CURRENTHP, int MAXSA, int CURRENTSA, int ARMOR, int SPEED, String NAME, String DESC, Texture IMG, int X, int Y, int MaxX, int MaxY) {
+	public Player(int ARMOR, int SPEED, String NAME, String DESC, Texture IMG, int X, int Y, int MaxX, int MaxY) {
 		hpBar = new HPbar();
-		hpBar.maxHP = MAXHP;
-		hpBar.currentHP = CURRENTHP;
+		hpBar.setPlay(this);
 		saBar = new StaminaBar();
-		saBar.maxStamina = MAXSA;
-		saBar.currentStamina = CURRENTSA;
+		saBar.setPlay(this);
 		armor = ARMOR;
 		speed = SPEED;
 		name = NAME;

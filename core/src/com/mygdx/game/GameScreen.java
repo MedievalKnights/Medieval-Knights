@@ -11,19 +11,17 @@ public class GameScreen {
 	MedievalKnights game;
 	Player player;
 	KeyInput inputs;
-	int currentHP = 100;
-	int maxHP = 100;
-	int currentSA = 100;
-	int maxSA = 100;
 	Texture background;
 
 	public void create(MedievalKnights game) {
 		world = new World();
 		this.game = game;
 		inputs = new KeyInput();
-		background = new Texture("Grass_Complete_RPG.png");
-		player = new Player(currentHP, maxHP, currentSA, maxSA, 5, 2, "John", "A Guy", new Texture("New_Piskel.png"),
-				150, 150, world.getWorldX(), world.getWorldY());
+		inputs.setGS(this);
+		background = new Texture("Grass.png");
+		// background = new Texture("Grass_Complete_RPG.png");
+		player = new Player(5, 2, "John", "A Guy", new Texture("New_Piskel.png"), 150, 150, world.getWorldX(),
+				world.getWorldY());
 		// player = new Player(100, 100, 100, 100, 5, 2, "John", "A Guy", new
 		// Texture("New_Piskel.png"), 150, 150, world.getWorldX(), world.getWorldY());
 		inputs.setPlayer(player);
