@@ -8,17 +8,16 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class GameScreen {
 
+	World world;
 	MedievalKnights game; 
-	
-	Texture background;
 	Player player;
 	KeyInput inputs;
 	
 	public void create(MedievalKnights game) {
+		world = new World();
 		this.game = game; 
 		inputs = new KeyInput();
-		background = new Texture("Grass_Complete_RPG.png");
-		player = new Player(15,15,5,2, "John", "A Guy",new Texture("New_Piskel.png"),15,15);
+		player = new Player(100,100,5,2, "John", "A Guy",new Texture("New_Piskel.png"),150,150,world.getWorldX(),world.getWorldY());
 		inputs.setPlayer(player);
 		Gdx.input.setInputProcessor(inputs);
 		
@@ -28,11 +27,13 @@ public class GameScreen {
 	public void render (SpriteBatch batch) {
 		player.move();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
-    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		batch.draw(background,0,0,900,900);
-		batch.draw(player.getImg(),player.getX(),player.getY(),96,96);
+		world.render(batch);
+		player.render(batch);
+		batch.draw(player.getImg(),player.getX()-32,player.getY()-32,64,64); 
+
+		batch.setProjectionMatrix(player.camera.combined);
 		batch.end();
 	}
 
@@ -40,6 +41,5 @@ public class GameScreen {
 
 	public void dispose () {
 		game.getBatch().dispose();
-		background.dispose();	
 	}
 }

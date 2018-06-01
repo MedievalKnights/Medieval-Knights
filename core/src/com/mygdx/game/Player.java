@@ -1,25 +1,32 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Player{
-	int maxHP;
-	int currentHP;
+public class Player {
+
 	int armor;
-	double speed;
-	double diagSpeed;
-	double tempSpeed;
+	float speed;
+	float diagSpeed;
+	float tempSpeed;
 	double x;
 	double y;
+	int maxX;
+	int maxY;
 	boolean mUp, mDown, mLeft, mRight;
 	Texture image;
 	String name;
 	String desc;
 	KeyInput inputs;
+	OrthographicCamera camera;
+	HPbar hpBar;
 
-	public Player(int MAX, int CURRENT, int ARMOR, int SPEED, String NAME, String DESC, Texture IMG, int X, int Y) {
-		maxHP = MAX;
-		currentHP = CURRENT;
+	public Player(int MAX, int CURRENT, int ARMOR, int SPEED, String NAME, String DESC, Texture IMG, int X, int Y, int MaxX, int MaxY) {
+		hpBar = new HPbar();
+		hpBar.maxHP = MAX;
+		hpBar.currentHP = CURRENT;
 		armor = ARMOR;
 		speed = SPEED;
 		name = NAME;
@@ -27,86 +34,108 @@ public class Player{
 		image = IMG;
 		x = X;
 		y = Y;
+		maxX = MaxX;
+		maxY = MaxY;
 		inputs = new KeyInput();
-		diagSpeed = Math.sqrt((speed*speed)/2);
+		diagSpeed = (float) Math.sqrt((speed * speed) / 2);
+
+		camera = new OrthographicCamera(900, 900);
+		camera.translate(X+38, Y+16);
 	}
+
 	public double getSpeed() {
 		return speed;
 	}
-	
+
 	public void setmUp(boolean mUp) {
 		this.mUp = mUp;
 	}
-	
+
 	public void setmDown(boolean mDown) {
 		this.mDown = mDown;
 	}
-	
+
 	public void setmLeft(boolean mLeft) {
 		this.mLeft = mLeft;
 	}
-	
+
 	public void setmRight(boolean mRight) {
 		this.mRight = mRight;
 	}
-	
+
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
-	
+
 	public void walk() {
-		
+
 	}
-	
+
 	public void move() {
-		if((mUp == true && (mLeft == true || mRight == true))||(mDown == true && (mLeft == true || mRight == true))) {
+		if ((mUp == true && (mLeft == true || mRight == true))
+				|| (mDown == true && (mLeft == true || mRight == true))) {
 			tempSpeed = diagSpeed;
-		}
-		else {
+		} else {
 			tempSpeed = speed;
 		}
-		
-		if(mUp == true && mDown == false) {
-			y += tempSpeed;
+
+		if (mUp == true && mDown == false) {
+			if(y < maxY) {
+				y += tempSpeed;
+				camera.translate(0, tempSpeed);
+			}
+		} else if (mUp == false && mDown == true) {
+			if(y > 0) {
+				y -= tempSpeed;
+				camera.translate(0, -tempSpeed);
+			}
 		}
-		else if(mUp == false && mDown == true){
-			y -= tempSpeed;
+
+		if (mLeft == true && mRight == false) {
+			if(x > 0) {
+				x -= tempSpeed;
+				camera.translate(-tempSpeed, 0);
+			}
+		} else if (mLeft == false && mRight == true) {
+			if(x < maxX) {
+				x += tempSpeed;
+				camera.translate(tempSpeed, 0);
+			}
 		}
-		
-		if(mLeft == true && mRight == false) {
-			x -= tempSpeed;
-		}
-		else if(mLeft == false && mRight == true){
-			x += tempSpeed;
-		}
+		camera.update();
+
 	}
-	
+
 	public int getX() {
 		return (int) Math.round(x);
 	}
-	
+
 	public int getY() {
 		return (int) Math.round(y);
 	}
-	
+
 	public int getHP() {
-		return currentHP;
+		return hpBar.currentHP;
 	}
 
 	public void damage(int damage) {
-		if (currentHP - damage < 0)
-			currentHP = 0;
+		if (hpBar.currentHP - damage < 0)
+			hpBar.currentHP = 0;
 		else
-			currentHP -= damage;
+			hpBar.currentHP -= damage;
 	}
 
 	public void heal(int heal) {
-		if (currentHP + heal > maxHP)
-			currentHP = maxHP;
+		if (hpBar.currentHP + heal > hpBar.maxHP)
+			hpBar.currentHP = hpBar.maxHP;
 		else
-			currentHP += heal;
+			hpBar.currentHP += heal;
+	}
+	public void render (SpriteBatch batch) {
+		hpBar.draw(batch);
 	}
 	
+
 	public Texture getImg() {
 		return image;
 	}

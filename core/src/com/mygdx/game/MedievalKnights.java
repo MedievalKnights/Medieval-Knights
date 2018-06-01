@@ -20,12 +20,13 @@ public class MedievalKnights extends ApplicationAdapter {
 	Menu menuScreen = new Menu();
 	GameScreen gameScreen = new GameScreen();
 
+
 	@Override
 	public void create() {
 		batch = new SpriteBatch();
 		if (gameState == 0)
 			menuScreen.create(this);
-	
+			SoundHandler.init();
 			
 	}
 
@@ -45,9 +46,12 @@ public class MedievalKnights extends ApplicationAdapter {
 				gameScreen.dispose();
 	}
 
+
 	public void startGame() { 
 		gameScreen.create(this);
+		SoundHandler.stopMainMenuMusic();
 	}
+
 	
 	public SpriteBatch getBatch() {
 		return batch;
