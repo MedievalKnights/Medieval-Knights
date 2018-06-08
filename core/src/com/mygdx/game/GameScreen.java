@@ -18,10 +18,10 @@ public class GameScreen {
 		this.game = game; 
 		inputs = new KeyInput();
 		player = new Player(100,100,5,2, "John", "A Guy",new Texture("New_Piskel.png"),150,150,world.getWorldX(),world.getWorldY());
-		inputs.setPlayer(player);
+		inputs.setUser(player);
 		Gdx.input.setInputProcessor(inputs);
 		
-		game.gameState++;
+		game.gameState = 1;
 	}
 
 	public void render (SpriteBatch batch) {

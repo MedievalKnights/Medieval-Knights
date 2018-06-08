@@ -10,29 +10,30 @@ public class EditScreen {
 
 	World world;
 	MedievalKnights game; 
-	Player player;
+	Creator creator;
 	KeyInput inputs;
 	
 	public void create(MedievalKnights game) {
 		world = new World();
 		this.game = game; 
 		inputs = new KeyInput();
-		player = new Player(100,100,5,2, "John", "A Guy",new Texture("New_Piskel.png"),150,150,world.getWorldX(),world.getWorldY());
-		inputs.setPlayer(player);
+		creator = new Creator(10,new Texture("Creator.png"),150,150,world.getWorldX(),world.getWorldY());
+		inputs.setUser(creator);
 		Gdx.input.setInputProcessor(inputs);
 		
-		game.gameState++;
+		game.gameState = 2;
+		System.out.println("1");
 	}
 
 	public void render (SpriteBatch batch) {
-		player.move();
+		creator.move();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		world.render(batch);
-		player.render(batch);
-		batch.draw(player.getImg(),player.getX()-32,player.getY()-32,64,64);
-		batch.setProjectionMatrix(player.camera.combined);
+		batch.draw(creator.getImg(),creator.getX()-32,creator.getY()-32,64,64); 
+
+		batch.setProjectionMatrix(creator.camera.combined);
 		batch.end();
 	}
 
