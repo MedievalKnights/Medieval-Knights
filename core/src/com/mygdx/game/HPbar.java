@@ -8,8 +8,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 public class HPbar {
 	Player player;
 	ShapeRenderer sr = new ShapeRenderer();
-	int maxHP;
-	int currentHP;
 	int width = 200;
 	final int height = 20;
 
@@ -27,7 +25,7 @@ public class HPbar {
 		// System.out.println("Hallo");
 		int x = Gdx.graphics.getWidth() / 2;
 		int y = Gdx.graphics.getHeight() / 2;
-		int HPP = player.maxHP / player.currentHP;
+		float HPP = player.maxHP / player.currentHP;
 		sr.setColor(1 - HPP, 1 * HPP, 0f, 0.8f);
 		// sr.rect(15-x, y-80, width, height);
 		sr.rect(50, 825, width, height);

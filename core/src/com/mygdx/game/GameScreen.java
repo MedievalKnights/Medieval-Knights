@@ -17,7 +17,6 @@ public class GameScreen {
 		world = new World();
 		this.game = game;
 		inputs = new KeyInput();
-		inputs.setGS(this);
 		background = new Texture("Grass.png");
 		// background = new Texture("Grass_Complete_RPG.png");
 		player = new Player(5, 2, "John", "A Guy", new Texture("New_Piskel.png"), 150, 150, world.getWorldX(),

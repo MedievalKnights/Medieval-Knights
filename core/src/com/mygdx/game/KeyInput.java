@@ -6,9 +6,13 @@ import com.badlogic.gdx.InputProcessor;
 public class KeyInput implements InputProcessor {
 	Player player;
 
-//	public void setGS(GameScreen ga) {
-//		gs = ga;
-//	}
+	// public void setGS(GameScreen ga) {
+	// gs = ga;
+	// }
+
+	public void setPlay(Player ga) {
+		player = ga;
+	}
 
 	public boolean keyDown(int keycode) {
 		System.out.println(keycode);
@@ -33,23 +37,29 @@ public class KeyInput implements InputProcessor {
 			break;
 		case Keys.RIGHT:
 			player.setmRight(true);
-			;
 			break;
 		case Keys.DOWN:
 			player.setmDown(true);
 			break;
 		case Keys.SHIFT_LEFT:
-			player.speed *= 2;
-			player.diagSpeed *= 2;
-			player.isPressed=true;
+			if (player.currentSA >= 4) {
+				player.setRunning(true);
+			}
+			else {
+				player.setRunning(false);
+			}
 			break;
 		case Keys.SHIFT_RIGHT:
-			player.speed *= 2;
-			player.diagSpeed *= 2;
-			player.isPressed=true;
+			if (player.currentSA >= 4) {
+				player.setRunning(true);
+			}
+			else {
+				player.setRunning(false);
+			}
 			break;
 
 		}
+
 		return false;
 	}
 
@@ -87,14 +97,12 @@ public class KeyInput implements InputProcessor {
 			player.setmDown(false);
 			break;
 		case Keys.SHIFT_LEFT:
-			player.speed /= 2;
-			player.diagSpeed /= 2;
-	
+
+			player.setRunning(false);
+
 			break;
 		case Keys.SHIFT_RIGHT:
-			player.speed /= 2;
-			player.diagSpeed /= 2;
-			
+			player.setRunning(false);
 			break;
 		}
 		return false;
