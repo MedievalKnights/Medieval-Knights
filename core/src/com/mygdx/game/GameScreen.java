@@ -17,12 +17,16 @@ public class GameScreen {
 		world = new World();
 		this.game = game;
 		inputs = new KeyInput();
+<<<<<<< HEAD
 		background = new Texture("Grass.png");
 		// background = new Texture("Grass_Complete_RPG.png");
 		player = new Player(5, 2, "John", "A Guy", new Texture("New_Piskel.png"), 150, 150, world.getWorldX(),
 				world.getWorldY());
 		// player = new Player(100, 100, 100, 100, 5, 2, "John", "A Guy", new
 		// Texture("New_Piskel.png"), 150, 150, world.getWorldX(), world.getWorldY());
+=======
+		player = new Player(100,100,5,2, "John", "A Guy",new Texture("sprites/New_Piskel.png"),150,150,world.getWorldX(),world.getWorldY());
+>>>>>>> MedievalKnights/master
 		inputs.setPlayer(player);
 		Gdx.input.setInputProcessor(inputs);
 

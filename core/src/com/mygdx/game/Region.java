@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Region {
-	TextureAtlas atlasBack = new TextureAtlas(Gdx.files.internal("Grass.atlas"));
+	TextureAtlas atlasBack = new TextureAtlas(Gdx.files.internal("atlases/Grass.atlas"));
 	Animation<TextureRegion> background = new Animation<TextureRegion>(1f,atlasBack.getRegions());
 
 	int regionX;
