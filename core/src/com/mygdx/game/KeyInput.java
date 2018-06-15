@@ -3,52 +3,74 @@ package com.mygdx.game;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 
-public class KeyInput implements InputProcessor{
+public class KeyInput implements InputProcessor {
 	Player player;
+
+	// public void setGS(GameScreen ga) {
+	// gs = ga;
+	// }
+
+	public void setPlay(Player ga) {
+		player = ga;
+	}
+
 	public boolean keyDown(int keycode) {
 		System.out.println(keycode);
-		switch(keycode) {
-			case Keys.W:
-				player.setmUp(true);
-				break;
-			case Keys.A:
-				player.setmLeft(true);
-				break;
-			case Keys.S:
-				player.setmDown(true);
-				break;
-			case Keys.D:
-				player.setmRight(true);
-				break;
-			case Keys.UP:
-				player.setmUp(true);
-				break;
-			case Keys.LEFT:
-				player.setmLeft(true);
-				break;
-			case Keys.RIGHT:
-				player.setmRight(true);;
-				break;
-			case Keys.DOWN:
-				player.setmDown(true);
-				break;
-			case Keys.SHIFT_LEFT:
-				player.speed*=2;
-				player.diagSpeed*=2;
-				break;
-			
+		switch (keycode) {
+		case Keys.W:
+			player.setmUp(true);
+			break;
+		case Keys.A:
+			player.setmLeft(true);
+			break;
+		case Keys.S:
+			player.setmDown(true);
+			break;
+		case Keys.D:
+			player.setmRight(true);
+			break;
+		case Keys.UP:
+			player.setmUp(true);
+			break;
+		case Keys.LEFT:
+			player.setmLeft(true);
+			break;
+		case Keys.RIGHT:
+			player.setmRight(true);
+			break;
+		case Keys.DOWN:
+			player.setmDown(true);
+			break;
+		case Keys.SHIFT_LEFT:
+			if (player.currentSA >= 4) {
+				player.setRunning(true);
+			}
+			else {
+				player.setRunning(false);
+			}
+			break;
+		case Keys.SHIFT_RIGHT:
+			if (player.currentSA >= 4) {
+				player.setRunning(true);
+			}
+			else {
+				player.setRunning(false);
+			}
+			break;
+
 		}
+
 		return false;
 	}
+
 	public void setPlayer(Player players) {
-		player=players;
-		
-		
+		player = players;
+
 	}
 
 	@Override
 	public boolean keyUp(int keycode) {
-		switch(keycode) {
+		switch (keycode) {
 		case Keys.W:
 			player.setmUp(false);
 			break;
@@ -68,16 +90,21 @@ public class KeyInput implements InputProcessor{
 			player.setmLeft(false);
 			break;
 		case Keys.RIGHT:
-			player.setmRight(false);;
+			player.setmRight(false);
+			;
 			break;
 		case Keys.DOWN:
 			player.setmDown(false);
 			break;
 		case Keys.SHIFT_LEFT:
-			player.speed/=2;
-			player.diagSpeed/=2;
+
+			player.setRunning(false);
+
 			break;
-	}
+		case Keys.SHIFT_RIGHT:
+			player.setRunning(false);
+			break;
+		}
 		return false;
 	}
 
@@ -115,5 +142,5 @@ public class KeyInput implements InputProcessor{
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 }
