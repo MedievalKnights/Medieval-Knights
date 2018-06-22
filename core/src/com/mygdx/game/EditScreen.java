@@ -17,14 +17,8 @@ public class EditScreen {
 		world = new World();
 		this.game = game; 
 		inputs = new KeyInput();
-<<<<<<< HEAD
 		creator = new Creator(10,new Texture("Creator.png"),150,150,world.getWorldX(),world.getWorldY());
 		inputs.setUser(creator);
-=======
-		player = new Player(5,2, "John", "A Guy",new Texture("New_Piskel.png"),150,150,world.getWorldX(),world.getWorldY());
-		player = new Player(100,100,"John", "A Guy",new Texture("sprites/New_Piskel.png"),150,150,world.getWorldX(),world.getWorldY());
-		inputs.setPlayer(player);
->>>>>>> MedievalKnights/master
 		Gdx.input.setInputProcessor(inputs);
 		
 		game.gameState = 2;

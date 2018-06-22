@@ -41,14 +41,10 @@ public class Menu {
 		Gdx.input.setInputProcessor(stage);
 
 		skin.add("default", font);
-<<<<<<< HEAD
 		skin.add("startbutton", new Texture("startButton.jpg"));
 		//
 		// skin.add("default", font);
-		// skin.add("editbutton", new Texture("startButton.jpg"));
-=======
-		skin.add("startbutton", new Texture("buttons/startButton.jpg"));
->>>>>>> MedievalKnights/master
+		// skin.add("editbutton", new Texture("startButton.jpg"));		skin.add("startbutton", new Texture("buttons/startButton.jpg"));
 
 		TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
 
@@ -63,14 +59,8 @@ public class Menu {
 				Pixmap.Format.RGB888);
 		pixmap.setColor(Color.BLACK);
 		pixmap.fill();
-
-<<<<<<< HEAD
 		// texture = new Texture(pixmap);
 		texture = new Texture("background.jpg");
-=======
-		//texture = new Texture(pixmap);
-		texture = new Texture("temp/background.jpg");
->>>>>>> MedievalKnights/master
 		startButton = new TextButton("", skin);
 		startButton.setBounds(Gdx.graphics.getWidth() / 2 - 128, Gdx.graphics.getHeight() / 2 - 64, 256, 128);
 

@@ -17,25 +17,12 @@ public class GameScreen {
 		world = new World();
 		this.game = game;
 		inputs = new KeyInput();
-<<<<<<< HEAD
+>>>>>>> origin/master
 		player = new Player(100,100,5,2, "John", "A Guy",new Texture("New_Piskel.png"),150,150,world.getWorldX(),world.getWorldY());
 		inputs.setUser(player);
 		Gdx.input.setInputProcessor(inputs);
 		
 		game.gameState = 1;
-=======
-		background = new Texture("atlases/Grass.png");
-		//background = new Texture("atlases/Grass_Complete_RPG.png");
-		player = new Player(5, 2, "John", "A Guy", new Texture("sprites/New_Piskel.png"), 150, 150, world.getWorldX(),
-				world.getWorldY());
-		// player = new Player(100, 100, 100, 100, 5, 2, "John", "A Guy", new
-		// Texture("New_Piskel.png"), 150, 150, world.getWorldX(), world.getWorldY());
-
-		inputs.setPlayer(player);
-		Gdx.input.setInputProcessor(inputs);
-
-		game.gameState++;
->>>>>>> MedievalKnights/master
 	}
 
 	public void render(SpriteBatch batch) {

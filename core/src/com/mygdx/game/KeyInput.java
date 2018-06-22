@@ -4,6 +4,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class KeyInput implements InputProcessor{
 	User player;
 =======
@@ -17,8 +18,8 @@ public class KeyInput implements InputProcessor {
 	public void setPlay(Player ga) {
 		player = ga;
 	}
-
->>>>>>> MedievalKnights/master
+public class KeyInput implements InputProcessor{
+	User player;
 	public boolean keyDown(int keycode) {
 		System.out.println(keycode);
 		switch (keycode) {
@@ -67,18 +68,8 @@ public class KeyInput implements InputProcessor {
 
 		return false;
 	}
-<<<<<<< HEAD
 	public void setUser(User players) {
 		player=players;
-		
-		
-=======
-
-	public void setPlayer(Player players) {
-		player = players;
-
->>>>>>> MedievalKnights/master
-	}
 
 	@Override
 	public boolean keyUp(int keycode) {
