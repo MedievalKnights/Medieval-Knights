@@ -38,7 +38,7 @@ public class Player {
 
 	public void Running() {
 		
-		if (isRunning == true) {
+		if (isRunning == true && currentSA>0) {
 			runSpeedMultiplier= 2;
 			diagSpeedMultiplier = 2;
 			if (currentSA >= 0) {
@@ -49,10 +49,28 @@ public class Player {
 			diagSpeedMultiplier = 1;
 			if (currentSA <= maxSA) {
 				currentSA += 0.25;
+				if(currentSA < 5) {
+					isRunning=false;
+				}
 			}
 		}
 	}
+	
+	public void damage(float damage) {
+		if (currentHP - damage < 0)
+			currentHP = 0;
+		
+		else
+			currentHP -= damage;
+	}
 
+	public void heal(float heal) {
+		if (currentHP + heal > maxHP)
+			currentHP = maxHP;
+		else
+			currentHP += heal;
+	}
+	
 	public Player(int ARMOR, int SPEED, String NAME, String DESC, Texture IMG, int X, int Y, int MaxX, int MaxY) {
 		hpBar = new HPbar();
 		hpBar.setPlay(this);
@@ -148,20 +166,6 @@ public class Player {
 
 	public float getHP() {
 		return currentHP;
-	}
-
-	public void damage(int damage) {
-		if (currentHP - damage < 0)
-			currentHP = 0;
-		else
-			currentHP -= damage;
-	}
-
-	public void heal(int heal) {
-		if (currentHP + heal > maxHP)
-			currentHP = maxHP;
-		else
-			currentHP += heal;
 	}
 
 	public void render(SpriteBatch batch) {
