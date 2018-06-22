@@ -3,26 +3,26 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.TextureData;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class GameScreen {
-	TextureAtlas tileSetAtlas;
-	Animation<TextureRegion> tileSet;
+	
 	World world;
 	MedievalKnights game;
 	Player player;
 	KeyInput inputs;
-	Texture background;
+	TextureRegion background;
 
 	public void create(MedievalKnights game) {
-		tileSetAtlas = new TextureAtlas("")
+		
 		world = new World();
 		this.game = game;
 		inputs = new KeyInput();
-		background = new Texture("");
+	
 		// background = new Texture("atlases/Grass_Complete_RPG.png");
 		player = new Player(5, 2, "John", "A Guy", new Texture("sprites/New_Piskel.png"), 150, 150, world.getWorldX(),
 				world.getWorldY());

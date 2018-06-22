@@ -1,5 +1,7 @@
 package com.mygdx.game;
 
+import java.util.Random;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -8,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Region {
-	TextureAtlas atlasBack = new TextureAtlas(Gdx.files.internal("atlases/Grass.atlas"));
+	TextureAtlas atlasBack = new TextureAtlas(Gdx.files.internal("atlases/TileSet(1).atlas"));
 	Animation<TextureRegion> background = new Animation<TextureRegion>(1f,atlasBack.getRegions());
 
 	int regionX;
@@ -19,7 +21,8 @@ public class Region {
 		regionY = rY;
 		for(int i = 0; i < 16;i++) {
 			for(int j = 0; j < 16;j++) {
-				region[i][j] = new Tile(i*32+regionX,j*32+regionY,background.getKeyFrame(1f));
+				int ran = new Random().nextInt(7);
+				region[i][j] = new Tile(i*32+regionX,j*32+regionY,background.getKeyFrame(ran));
 			}
 		}
 	}
