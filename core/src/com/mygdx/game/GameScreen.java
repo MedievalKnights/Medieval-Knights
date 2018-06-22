@@ -1,45 +1,49 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class GameScreen {
 
-	MedievalKnights game; 
-	Texture background;
+	World world;
+	MedievalKnights game;
 	Player player;
 	KeyInput inputs;
-	
+	Texture background;
+
 	public void create(MedievalKnights game) {
-		this.game = game; 
+		world = new World();
+		this.game = game;
 		inputs = new KeyInput();
-		background = new Texture("Grass_Complete_RPG.png");
-		player = new Player(15,15,5,2, "John", "A Guy",new Texture("New_Piskel.png"),15,15);
+		background = new Texture("atlases/Grass.png");
+		//background = new Texture("atlases/Grass_Complete_RPG.png");
+		player = new Player(5, 2, "John", "A Guy", new Texture("sprites/New_Piskel.png"), 150, 150, world.getWorldX(),
+				world.getWorldY());
+		// player = new Player(100, 100, 100, 100, 5, 2, "John", "A Guy", new
+		// Texture("New_Piskel.png"), 150, 150, world.getWorldX(), world.getWorldY());
+
 		inputs.setPlayer(player);
 		Gdx.input.setInputProcessor(inputs);
-		
+
 		game.gameState++;
 	}
 
-	public void render (SpriteBatch batch) {
+	public void render(SpriteBatch batch) {
 		player.move();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
-    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		batch.draw(background,0,0,900,900);
-		batch.draw(player.getImg(),player.getX(),player.getY(),96,96);
+		world.render(batch);
+		player.render(batch);
+		
+
 		batch.setProjectionMatrix(player.camera.combined);
 		batch.end();
 	}
 
-
-
-	public void dispose () {
+	public void dispose() {
 		game.getBatch().dispose();
-		background.dispose();	
 	}
 }
