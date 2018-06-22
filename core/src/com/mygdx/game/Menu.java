@@ -25,8 +25,9 @@ public class Menu {
 	Pixmap pixmap;
 	Texture texture;
 	TextButton startButton;
-	
-	MedievalKnights game; 
+	TextButton editButton;
+
+	MedievalKnights game;
 
 	Pixmap backgroundMap;
 
@@ -34,13 +35,16 @@ public class Menu {
 		stage = new Stage();
 		font = new BitmapFont();
 		skin = new Skin();
-		
-		this.game = game; 
-		
+
+		this.game = game;
+
 		Gdx.input.setInputProcessor(stage);
 
 		skin.add("default", font);
-		skin.add("startbutton", new Texture("buttons/startButton.jpg"));
+		skin.add("startbutton", new Texture("startButton.jpg"));
+		//
+		// skin.add("default", font);
+		// skin.add("editbutton", new Texture("startButton.jpg"));
 
 		TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
 
@@ -56,13 +60,18 @@ public class Menu {
 		pixmap.setColor(Color.BLACK);
 		pixmap.fill();
 
-		//texture = new Texture(pixmap);
-		texture = new Texture("temp/background.jpg");
+		// texture = new Texture(pixmap);
+		texture = new Texture("background.jpg");
 		startButton = new TextButton("", skin);
-		startButton.setBounds(Gdx.graphics.getWidth()/2-128, Gdx.graphics.getHeight()/2-64, 256, 128);
-		//startButton.setPosition(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+		startButton.setBounds(Gdx.graphics.getWidth() / 2 - 128, Gdx.graphics.getHeight() / 2 - 64, 256, 128);
+
+		editButton = new TextButton("", skin);
+		editButton.setBounds(Gdx.graphics.getWidth() / 2 - 128, Gdx.graphics.getHeight() / 2 - 256, 256, 128);
+		// startButton.setPosition(Gdx.graphics.getWidth()/2,
+		// Gdx.graphics.getHeight()/2);
 
 		stage.addActor(startButton);
+		stage.addActor(editButton);
 
 	}
 
@@ -73,8 +82,8 @@ public class Menu {
 
 		stage.act();
 		stage.draw();
-		
-		getButtonInput(); 
+
+		getButtonInput();
 	}
 
 	public void dispose() {
@@ -82,17 +91,17 @@ public class Menu {
 		background.dispose();
 
 	}
+
 	public void getButtonInput() {
 
 		if (startButton.isPressed()) {
-			System.out.println("PRESSED!");
-			//gameScreen.startGame();
-
-		if(startButton.isPressed()) {
 			game.startGame();
+			System.out.println("0");
 
 		}
-	}
-	
+		if (editButton.isPressed()) {
+			game.startEdit();
+			System.out.println("1");
+		}
 	}
 }

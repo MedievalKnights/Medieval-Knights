@@ -3,17 +3,8 @@ package com.mygdx.game;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 
-public class KeyInput implements InputProcessor {
-	Player player;
-
-	// public void setGS(GameScreen ga) {
-	// gs = ga;
-	// }
-
-	public void setPlay(Player ga) {
-		player = ga;
-	}
-
+public class KeyInput implements InputProcessor{
+	User player;
 	public boolean keyDown(int keycode) {
 		System.out.println(keycode);
 		switch (keycode) {
@@ -62,11 +53,8 @@ public class KeyInput implements InputProcessor {
 
 		return false;
 	}
-
-	public void setPlayer(Player players) {
-		player = players;
-
-	}
+	public void setUser(User players) {
+		player=players;
 
 	@Override
 	public boolean keyUp(int keycode) {

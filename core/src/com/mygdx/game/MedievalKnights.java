@@ -19,6 +19,7 @@ public class MedievalKnights extends ApplicationAdapter {
 
 	Menu menuScreen = new Menu();
 	GameScreen gameScreen = new GameScreen();
+	EditScreen editScreen = new EditScreen();
 
 
 	@Override
@@ -36,14 +37,12 @@ public class MedievalKnights extends ApplicationAdapter {
 			menuScreen.render(batch);
 		if (gameState == 1)
 			gameScreen.render(batch);
+		if (gameState == 2)
+			editScreen.render(batch);
 	}
 
 	@Override
 	public void dispose() {
-		if (gameState == 0)
-			// menuScreen.dispose();
-			if (gameState == 1)
-				gameScreen.dispose();
 	}
 
 
@@ -52,6 +51,10 @@ public class MedievalKnights extends ApplicationAdapter {
 		SoundHandler.stopMainMenuMusic();
 	}
 
+	public void startEdit() {
+		editScreen.create(this);
+		SoundHandler.stopMainMenuMusic();
+	}
 	
 	public SpriteBatch getBatch() {
 		return batch;
