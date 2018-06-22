@@ -7,7 +7,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 
 public class SoundHandler {
-	private static Music mainMenuMusic = Gdx.audio.newMusic(Gdx.files.internal("mainMenuMusic.mp3"));
+	private static Music mainMenuMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/mainMenuMusic.mp3"));
 //	private static Music piano = Gdx.audio.newMusic(Gdx.files.internal("sounds/piano.mp3"));
 	//private static Music bossMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/BossBattle.wav"));
 	
