@@ -37,7 +37,7 @@ public class GameScreen {
 		batch.begin();
 		world.render(batch);
 		player.render(batch);
-		
+		batch.draw(player.getImg(), player.getX() - 32, player.getY() - 32, 64, 64);
 
 		batch.draw(player.getImg(), player.getX() - 32, player.getY() - 32, 64, 64);
 

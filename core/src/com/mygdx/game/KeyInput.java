@@ -19,20 +19,16 @@ public class KeyInput implements InputProcessor {
 		switch (keycode) {
 		case Keys.W:
 			player.setmUp(true);
-
 			player.setAnim("walkingNorth");
-
-
+			player.setAnim("walkingNorth");
 			break;
 		case Keys.A:
 			player.setmLeft(true);
 			break;
 		case Keys.S:
 			player.setmDown(true);
-
 			player.setAnim("walkingSouth");
-
-
+			player.setAnim("walkingSouth");
 			break;
 		case Keys.D:
 			player.setmRight(true);
