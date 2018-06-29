@@ -4,12 +4,19 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+<<<<<<< HEAD
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+<<<<<<< Updated upstream
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+=======
+=======
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+>>>>>>> MedievalKnights/master
+>>>>>>> Stashed changes
 
 public class Player {
 
@@ -24,17 +31,29 @@ public class Player {
 	float diagSpeed;
 	float diagSpeedMultiplier;
 	float tempSpeed;
+<<<<<<< Updated upstream
 
+=======
+<<<<<<< HEAD
+>>>>>>> Stashed changes
 	float elapsedTime = 0;
 	float x;
 	float y;
 	int maxX;
 	int maxY;
 	String anim = "walkingSouth";
+<<<<<<< Updated upstream
+=======
+=======
+>>>>>>> Stashed changes
 	double x;
 	double y;
 	int maxX;
 	int maxY;
+<<<<<<< Updated upstream
+=======
+>>>>>>> MedievalKnights/master
+>>>>>>> Stashed changes
 	boolean mUp, mDown, mLeft, mRight;
 	Texture image;
 	String name;
@@ -44,6 +63,7 @@ public class Player {
 	GameScreen gs;
 	HPbar hpBar;
 	StaminaBar saBar;
+<<<<<<< HEAD
 	TextureAtlas walkNorthAtlas;
 	TextureAtlas walkSouthAtlas;
 	Animation<TextureRegion> walkNorthAnimation;
@@ -74,6 +94,10 @@ public class Player {
 		walkSouthAtlas = new TextureAtlas(Gdx.files.internal("sprites/knight-walk-south.atlas"));
 		walkNorthAnimation = new Animation<TextureRegion>(1 / 3f, walkNorthAtlas.getRegions());
 		walkSouthAnimation = new Animation<TextureRegion>(1 / 3f, walkSouthAtlas.getRegions());
+<<<<<<< Updated upstream
+=======
+=======
+>>>>>>> Stashed changes
 
 	public void setRunning(boolean x) {
 		isRunning = x;
@@ -115,6 +139,10 @@ public class Player {
 	}
 	
 	public Player(int ARMOR, int SPEED, String NAME, String DESC, Texture IMG, int X, int Y, int MaxX, int MaxY) {
+<<<<<<< Updated upstream
+=======
+>>>>>>> MedievalKnights/master
+>>>>>>> Stashed changes
 		hpBar = new HPbar();
 		hpBar.setPlay(this);
 		saBar = new StaminaBar();
@@ -134,6 +162,7 @@ public class Player {
 
 		camera = new OrthographicCamera(900, 900);
 		camera.translate(X + 38, Y + 16);
+<<<<<<< HEAD
 	}
 	public TextureRegion getAnimation() {
 		elapsedTime += Gdx.graphics.getDeltaTime();
@@ -152,6 +181,8 @@ public class Player {
 	}
 	public void setAnim(String a) {
 		anim = a;
+=======
+>>>>>>> MedievalKnights/master
 	}
 	public double getSpeed() {
 		return speed;

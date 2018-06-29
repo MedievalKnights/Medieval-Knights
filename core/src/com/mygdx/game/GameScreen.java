@@ -37,7 +37,11 @@ public class GameScreen {
 		batch.begin();
 		world.render(batch);
 		player.render(batch);
+<<<<<<< HEAD
 		
+=======
+		batch.draw(player.getImg(), player.getX() - 32, player.getY() - 32, 64, 64);
+>>>>>>> MedievalKnights/master
 
 		batch.draw(player.getImg(), player.getX() - 32, player.getY() - 32, 64, 64);
 
