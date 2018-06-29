@@ -19,34 +19,16 @@ public class KeyInput implements InputProcessor {
 		switch (keycode) {
 		case Keys.W:
 			player.setmUp(true);
-<<<<<<< Updated upstream
-
 			player.setAnim("walkingNorth");
-
-
-=======
-<<<<<<< HEAD
 			player.setAnim("walkingNorth");
-=======
->>>>>>> MedievalKnights/master
->>>>>>> Stashed changes
 			break;
 		case Keys.A:
 			player.setmLeft(true);
 			break;
 		case Keys.S:
 			player.setmDown(true);
-<<<<<<< Updated upstream
-
 			player.setAnim("walkingSouth");
-
-
-=======
-<<<<<<< HEAD
 			player.setAnim("walkingSouth");
-=======
->>>>>>> MedievalKnights/master
->>>>>>> Stashed changes
 			break;
 		case Keys.D:
 			player.setmRight(true);
