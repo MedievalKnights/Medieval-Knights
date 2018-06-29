@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 
 public class Player {
 
@@ -22,12 +24,17 @@ public class Player {
 	float diagSpeed;
 	float diagSpeedMultiplier;
 	float tempSpeed;
+
 	float elapsedTime = 0;
 	float x;
 	float y;
 	int maxX;
 	int maxY;
 	String anim = "walkingSouth";
+	double x;
+	double y;
+	int maxX;
+	int maxY;
 	boolean mUp, mDown, mLeft, mRight;
 	Texture image;
 	String name;
@@ -67,6 +74,47 @@ public class Player {
 		walkSouthAtlas = new TextureAtlas(Gdx.files.internal("sprites/knight-walk-south.atlas"));
 		walkNorthAnimation = new Animation<TextureRegion>(1 / 3f, walkNorthAtlas.getRegions());
 		walkSouthAnimation = new Animation<TextureRegion>(1 / 3f, walkSouthAtlas.getRegions());
+
+	public void setRunning(boolean x) {
+		isRunning = x;
+	}
+
+	public void Running() {
+		
+		if (isRunning == true && currentSA>0) {
+			runSpeedMultiplier= 2;
+			diagSpeedMultiplier = 2;
+			if (currentSA >= 0) {
+				currentSA -= 0.5;
+			}
+		} else {
+			runSpeedMultiplier= 1;
+			diagSpeedMultiplier = 1;
+			if (currentSA <= maxSA) {
+				currentSA += 0.25;
+				if(currentSA < 5) {
+					isRunning=false;
+				}
+			}
+		}
+	}
+	
+	public void damage(float damage) {
+		if (currentHP - damage < 0)
+			currentHP = 0;
+		
+		else
+			currentHP -= damage;
+	}
+
+	public void heal(float heal) {
+		if (currentHP + heal > maxHP)
+			currentHP = maxHP;
+		else
+			currentHP += heal;
+	}
+	
+	public Player(int ARMOR, int SPEED, String NAME, String DESC, Texture IMG, int X, int Y, int MaxX, int MaxY) {
 		hpBar = new HPbar();
 		hpBar.setPlay(this);
 		saBar = new StaminaBar();
@@ -180,18 +228,10 @@ public class Player {
 		return currentHP;
 	}
 
-	public void damage(int damage) {
-		if (currentHP - damage < 0)
-			currentHP = 0;
-		else
-			currentHP -= damage;
-	}
-
-	public void heal(int heal) {
-		if (currentHP + heal > maxHP)
-			currentHP = maxHP;
-		else
-			currentHP += heal;
+	public void render(SpriteBatch batch) {
+		hpBar.draw(batch);
+		saBar.draw(batch);
+		Running();
 	}
 
 	public void render(SpriteBatch batch) {
