@@ -1,9 +1,15 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 
 public class Player {
 
@@ -18,6 +24,13 @@ public class Player {
 	float diagSpeed;
 	float diagSpeedMultiplier;
 	float tempSpeed;
+
+	float elapsedTime = 0;
+	float x;
+	float y;
+	int maxX;
+	int maxY;
+	String anim = "walkingSouth";
 	double x;
 	double y;
 	int maxX;
@@ -31,6 +44,36 @@ public class Player {
 	GameScreen gs;
 	HPbar hpBar;
 	StaminaBar saBar;
+	TextureAtlas walkNorthAtlas;
+	TextureAtlas walkSouthAtlas;
+	Animation<TextureRegion> walkNorthAnimation;
+	Animation<TextureRegion> walkSouthAnimation;
+	public void setRunning(boolean x) {
+		isRunning = x;
+	}
+	
+	public void Running() {
+		
+		if (isRunning == true) {
+			runSpeedMultiplier= 2;
+			diagSpeedMultiplier = 2;
+			if (currentSA >= 0) {
+				currentSA -= 0.5;
+			}
+		} else {
+			runSpeedMultiplier= 1;
+			diagSpeedMultiplier = 1;
+			if (currentSA <= maxSA) {
+				currentSA += 0.25;
+			}
+		}
+	}
+
+	public Player(int ARMOR, int SPEED, String NAME, String DESC, Texture IMG, int X, int Y, int MaxX, int MaxY) {
+		walkNorthAtlas = new TextureAtlas(Gdx.files.internal("sprites/knight-walk-north.atlas"));
+		walkSouthAtlas = new TextureAtlas(Gdx.files.internal("sprites/knight-walk-south.atlas"));
+		walkNorthAnimation = new Animation<TextureRegion>(1 / 3f, walkNorthAtlas.getRegions());
+		walkSouthAnimation = new Animation<TextureRegion>(1 / 3f, walkSouthAtlas.getRegions());
 
 	public void setRunning(boolean x) {
 		isRunning = x;
@@ -92,7 +135,24 @@ public class Player {
 		camera = new OrthographicCamera(900, 900);
 		camera.translate(X + 38, Y + 16);
 	}
-
+	public TextureRegion getAnimation() {
+		elapsedTime += Gdx.graphics.getDeltaTime();
+		TextureRegion ret;
+		if (anim.equals("walkingNorth")) {
+			ret = walkNorthAnimation.getKeyFrame(elapsedTime, true);
+		}
+		else if (anim.equals("walkingSouth")) {
+			ret = walkSouthAnimation.getKeyFrame(elapsedTime, true);
+		}
+		else {
+			ret = walkNorthAnimation.getKeyFrame(elapsedTime, true);
+		}
+		return ret;
+		
+	}
+	public void setAnim(String a) {
+		anim = a;
+	}
 	public double getSpeed() {
 		return speed;
 	}
@@ -171,6 +231,13 @@ public class Player {
 	public void render(SpriteBatch batch) {
 		hpBar.draw(batch);
 		saBar.draw(batch);
+		Running();
+	}
+
+	public void render(SpriteBatch batch) {
+		hpBar.draw(batch);
+		saBar.draw(batch);
+		batch.draw(getAnimation(), x, y , 64, 64);
 		Running();
 	}
 
