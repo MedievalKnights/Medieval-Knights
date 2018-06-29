@@ -11,18 +11,24 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Region {
 	TextureAtlas atlasBack = new TextureAtlas(Gdx.files.internal("atlases/TileSet(1).atlas"));
-	Animation<TextureRegion> background = new Animation<TextureRegion>(1f,atlasBack.getRegions());
 
+	Animation<TextureRegion> background = new Animation<TextureRegion>(1f,atlasBack.getRegions());
+	int num=0;
+	public static final int RESX=16;
+	public static final int RESY=16;
 	int regionX;
 	int regionY;
-	Tile[][] region = new Tile[16][16];
+	Tile[][] region = new Tile[RESX][RESY];
 	public Region(int rX, int rY) {
 		regionX = rX;
 		regionY = rY;
-		for(int i = 0; i < 16;i++) {
-			for(int j = 0; j < 16;j++) {
-				int ran = new Random().nextInt(7);
-				region[i][j] = new Tile(i*32+regionX,j*32+regionY,background.getKeyFrame(ran));
+		for(int i = 0; i < RESX;i++) {
+			for(int j = 0; j < RESY;j++) {
+				System.out.println(num);
+				if(i>=8)
+					region[i][j] = new Tile(i*32+regionX,j*32+regionY,background.getKeyFrame(num));
+				else
+					region[i][j] = new Tile(i*32+regionX,j*32+regionY,background.getKeyFrame(5));
 			}
 		}
 	}
