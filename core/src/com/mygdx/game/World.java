@@ -25,10 +25,10 @@ public class World {
 	}
 
 	public int getWorldX() {
-		return worldLength * 512;
+		return worldLength * 1024;
 	}
 
 	public int getWorldY() {
-		return worldWidth * 512;
+		return worldWidth * 1024;
 	}
 }

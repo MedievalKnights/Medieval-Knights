@@ -26,9 +26,9 @@ public class Region {
 			for(int j = 0; j < RESY;j++) {
 				System.out.println(num);
 				if(i>=8)
-					region[i][j] = new Tile(i*32+regionX,j*32+regionY,background.getKeyFrame(num));
-				else
-					region[i][j] = new Tile(i*32+regionX,j*32+regionY,background.getKeyFrame(5));
+					region[i][j] = new Tile(i*64+regionX,j*64+regionY,background.getKeyFrame(num+5));
+				else	
+				region[i][j] = new Tile(i*64+regionX,j*64+regionY,background.getKeyFrame(num));
 			}
 		}
 	}
@@ -37,7 +37,7 @@ public class Region {
 		for(int i = 0; i < 16;i++) {
 			for(int j = 0; j < 16;j++) {
 				Tile t = region[i][j];
-				batch.draw(t.getTile(), t.getX(), t.getY(), 32, 32);
+				batch.draw(t.getTile(), t.getX(), t.getY(), 64, 64);
 			}
 		}
 	}
