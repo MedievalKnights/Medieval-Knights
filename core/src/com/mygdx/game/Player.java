@@ -36,9 +36,9 @@ public class Player {
 		isRunning = x;
 	}
 
-	public void Running() {
+public void Running() {
 		
-		if (isRunning == true) {
+		if (isRunning == true && currentSA>0) {
 			runSpeedMultiplier= 2;
 			diagSpeedMultiplier = 2;
 			if (currentSA >= 0) {
@@ -49,6 +49,9 @@ public class Player {
 			diagSpeedMultiplier = 1;
 			if (currentSA <= maxSA) {
 				currentSA += 0.25;
+				if(currentSA < 5) {
+					isRunning=false;
+				}
 			}
 		}
 	}
