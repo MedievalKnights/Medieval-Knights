@@ -57,7 +57,7 @@ public class Player {
 		isRunning = x;
 	}
 
-	public void Running() {
+public void Running() {
 		
 		if (isRunning == true && currentSA>0) {
 			runSpeedMultiplier= 2;
