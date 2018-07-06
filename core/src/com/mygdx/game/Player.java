@@ -40,8 +40,8 @@ public class Player {
 	KeyInput inputs;
 	OrthographicCamera camera;
 	GameScreen gs;
-	HPbar hpBar;
-	StaminaBar saBar;
+	HPbar hpBar= new HPbar();
+	StaminaBar saBar= new StaminaBar();
 	TextureAtlas walkNorthAtlas;
 	TextureAtlas walkSouthAtlas;
 	Animation<TextureRegion> walkNorthAnimation;
@@ -52,6 +52,27 @@ public class Player {
 		walkSouthAtlas = new TextureAtlas(Gdx.files.internal("sprites/knight-walk-south.atlas"));
 		walkNorthAnimation = new Animation<TextureRegion>(1 / 3f, walkNorthAtlas.getRegions());
 		walkSouthAnimation = new Animation<TextureRegion>(1 / 3f, walkSouthAtlas.getRegions());
+		
+		
+		hpBar = new HPbar();
+		hpBar.setPlay(this);
+		saBar = new StaminaBar();
+		saBar.setPlay(this);
+		inputs = new KeyInput();
+		inputs.setPlay(this);
+		armor = ARMOR;
+		speed = SPEED;
+		name = NAME;
+		desc = DESC;
+		image = IMG;
+		x = X;
+		y = Y;
+		maxX = MaxX;
+		maxY = MaxY;
+		diagSpeed = (float) Math.sqrt((speed * speed) / 2);
+
+		camera = new OrthographicCamera(900, 900);
+		camera.translate(X + 38, Y + 16);
 	}
 	public void setRunning(boolean x) {
 		isRunning = x;
@@ -188,7 +209,7 @@ public void Running() {
 	public void render(SpriteBatch batch) {
 		hpBar.draw(batch);
 		saBar.draw(batch);
-		batch.draw(getAnimation(), x, y , 64, 64);
+		batch.draw(getAnimation(), x, y , 128, 128);
 		Running();
 	}
 
